@@ -1,0 +1,21 @@
+steps:
+  # Step 1: Git Clone
+#  - name: 'gcr.io/cloud-builders/git'
+#    args: ['clone', 'https://github.com/ashiphsayyad32/User-Management-Java.git', 'source']
+
+#  # Step 2: Check Maven Version & Run Unit Tests
+#  - name: 'maven:3-eclipse-temurin-17-alpine'
+#    entrypoint: 'mvn'
+#    args: ['test']
+#
+  # Step 3: Build the Maven project
+  - name: 'maven:3-eclipse-temurin-17-alpine'
+    entrypoint: 'mvn'
+    args: ['clean', 'install']
+
+  # Step 4: Containerize APP
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [ 'build', '-t', 'us-central1-docker.pkg.dev/ashiph/user-management-registry/user-management:$SHORT_SHA', '.' ]
+
+options:
+  logging: CLOUD_LOGGING_ONLY
