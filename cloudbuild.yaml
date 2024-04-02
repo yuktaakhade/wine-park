@@ -15,7 +15,7 @@ steps:
 
   # Step 4: Containerize APP
   - name: 'gcr.io/cloud-builders/docker'
-    args: [ 'build', '-t', 'us-central1-docker.pkg.dev/midyear-byway-418606/wine-park:$SHORT_SHA', '.' ]
+    args: [ 'build', '-t', 'us-central1-docker.pkg.dev/midyear-byway-418606/wine-park:$SHORT_SHA', 'target/wine-park-0.0.1-SNAPSHOT.jar app.jar' ]
 
 options:
   logging: CLOUD_LOGGING_ONLY
