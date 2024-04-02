@@ -15,7 +15,7 @@ steps:
 
   # Step 4: Containerize APP
   - name: 'gcr.io/cloud-builders/docker'
-    args: [ 'build', '-t', 'us-central1-docker.pkg.dev/ashiph/user-management-registry/user-management:$SHORT_SHA', '.' ]
+    args: [ 'build', '-t', 'us-central1-docker.pkg.dev/midyear-byway-418606/wine-park:$SHORT_SHA', '.' ]
 
 options:
   logging: CLOUD_LOGGING_ONLY
