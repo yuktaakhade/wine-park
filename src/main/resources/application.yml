@@ -3,7 +3,7 @@
    datasource:
      driver-class-name: com.mysql.cj.jdbc.Driver
      url: jdbc:mysql://35.225.26.236/demo
-     username: demo
+     username: root
      password: root
    jpa:
      hibernate:
