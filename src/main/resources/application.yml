@@ -4,7 +4,7 @@
      driver-class-name: com.mysql.cj.jdbc.Driver
      url: jdbc:mysql://35.225.89.110/wine-park
      username: Host
-     password:host
+     password: host
    jpa:
      hibernate:
        ddl-auto: update
