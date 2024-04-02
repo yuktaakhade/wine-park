@@ -9,7 +9,7 @@ steps:
 #    args: ['test']
 #
   # Step 3: Build the Maven project
-  - name: 'maven:3'
+  - name: 'maven:4'
     entrypoint: 'mvn'
     args: ['clean', 'install']
 
