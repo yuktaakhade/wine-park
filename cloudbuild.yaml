@@ -18,9 +18,9 @@ steps:
     args: [ 'build', '-t', 'us-central1-docker.pkg.dev/midyear-byway-418606/wine-park/wine-park:$SHORT_SHA', '.' ]
     
  
-    Step 4: Deploy the image to Google App Engine
+  #  Step 5: Deploy the image to Google App Engine
   - name: 'gcr.io/cloud-builders/gcloud'
-    args: ['app', 'deploy', 'your-app.yaml'] # Provide the path to your app.yaml file
+    args: ['app', 'deploy', 'sus-central1-docker.pkg.dev/midyear-byway-418606/wine-park/wine-park:$SHORT_SHA'] # Provide the path to your app.yaml file
 
 images:
   - 'us-central1-docker.pkg.dev/midyear-byway-418606/wine-park/wine-park:$SHORT_SHA'
