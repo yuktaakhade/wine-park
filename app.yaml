@@ -1,0 +1,13 @@
+runtime: custom
+env: flex
+service: api
+
+runtime_config:
+   jdk: openjdk8
+
+handlers:
+- url: /.*
+  # script: this field is required, but ignored
+
+automatic_scaling:
+  min_num_instances: 1
