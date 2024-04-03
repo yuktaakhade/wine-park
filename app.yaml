@@ -13,14 +13,19 @@
 #   min_num_instances: 1
 
 
+# runtime: custom
+# env: flex
+
+# runtime_config:
+#   jdk:'openjdk11'
+# handlers:
+# - url: .*
+#   # script: this field is required, but ignored
+
+# automatic_scaling:
+#   min_instances: 1
+
 runtime: custom
 env: flex
-
 runtime_config:
-  jdk:'openjdk11'
-handlers:
-- url: .*
-  # script: this field is required, but ignored
-
-automatic_scaling:
-  min_instances: 1
+   jdk:'openjdk11'
