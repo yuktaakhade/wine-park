@@ -20,7 +20,7 @@ steps:
  
   #  Step 5: Deploy the image to Google App Engine
   - name: 'gcr.io/cloud-builders/gcloud'
-    args: ['app', 'deploy', 'https://github.com/yuktaakhade/wine-park/blob/main/app.yaml'] # Provide the path to your app.yaml file
+    args: ['app', 'deploy' ] # Provide the path to your app.yaml file
 
 images:
   - 'us-central1-docker.pkg.dev/midyear-byway-418606/wine-park/wine-park:$SHORT_SHA'
