@@ -1,41 +1,76 @@
-steps:
- #  Step 1: Git Clone
- # - name: 'gcr.io/cloud-builders/git'
- #   args: ['clone', 'https://github.com/yuktaakhade/wine-park.git', 'source']
+# steps:
+#  #  Step 1: Git Clone
+#  # - name: 'gcr.io/cloud-builders/git'
+#  #   args: ['clone', 'https://github.com/yuktaakhade/wine-park.git', 'source']
 
-#  # Step 2: Check Maven Version & Run Unit Tests
-#  - name: 'maven:3'
-#    entrypoint: 'mvn'
-#    args: ['test']
-#
+# #  # Step 2: Check Maven Version & Run Unit Tests
+# #  - name: 'maven:3'
+# #    entrypoint: 'mvn'
+# #    args: ['test']
+# #
+#   # Step 3: Build the Maven project
+#   - name: 'maven:3-eclipse-temurin-11-alpine'
+#     entrypoint: 'mvn'
+#     args: ['clean', 'install']
+
+#   # Step 4: Containerize APP
+#   - name: 'gcr.io/cloud-builders/docker'
+#     args: [ 'build', '-t', 'us-central1-docker.pkg.dev/midyear-byway-418606/wine-park/wine-park:$SHORT_SHA', '.' ]
+    
+ 
+#   # Push Docker image to App Engine
+#   # - name: 'gcr.io/cloud-builders/gcloud'
+#   #   args: ['app', 'deploy', 'us-central1-docker.pkg.dev/midyear-byway-418606/wine-park', 'app.yaml']
+#       # Deploy GAR image to App Engine
+#   # - name: 'gcr.io/cloud-builders/gcloud'
+#   #   args: [ 'app', 'deploy', '--image-url'' us-central1-docker.pkg.dev/midyear-byway-418606/wine-park:$SHORT_SHA']
+
+#     # Docker push to Google Artifact Registry
+#   - name: 'gcr.io/cloud-builders/docker'
+#     args: [ 'push',  ''us-central1-docker.pkg.dev/midyear-byway-418606/wine-park/wine-park:$SHORT_SHA' ]
+
+#     # Deploy GAR image to App Engine
+#   - name: 'gcr.io/cloud-builders/gcloud'
+#     args: [ 'app', 'deploy', '--image-url', 'us-central1-docker.pkg.dev/midyear-byway-418606/wine-park/wine-park:$SHORT_SHA' ]
+
+# images:
+#   - 'us-central1-docker.pkg.dev/midyear-byway-418606/wine-park/wine-park:$SHORT_SHA'
+
+
+# options:
+#   logging: CLOUD_LOGGING_ONLY
+
+
+  steps:
+  # Step 1: Git Clone
+  - name: 'gcr.io/cloud-builders/git'
+    args: ['clone', 'https://github.com/yuktaakhade/wine-park.git', 'source']
+
+  # Step 2: Check Maven Version & Run Unit Tests
+  # - name: 'maven:3'
+  #   entrypoint: 'mvn'
+  #   args: ['test']
+
   # Step 3: Build the Maven project
-  - name: 'maven:3-eclipse-temurin-11-alpine'
+  - name: 'maven:3.8.4-jdk-11'
     entrypoint: 'mvn'
     args: ['clean', 'install']
 
   # Step 4: Containerize APP
   - name: 'gcr.io/cloud-builders/docker'
-    args: [ 'build', '-t', 'us-central1-docker.pkg.dev/midyear-byway-418606/wine-park/wine-park:$SHORT_SHA', '.' ]
-    
- 
-  # Push Docker image to App Engine
-  # - name: 'gcr.io/cloud-builders/gcloud'
-  #   args: ['app', 'deploy', 'us-central1-docker.pkg.dev/midyear-byway-418606/wine-park', 'app.yaml']
-      # Deploy GAR image to App Engine
-  # - name: 'gcr.io/cloud-builders/gcloud'
-  #   args: [ 'app', 'deploy', '--image-url'' us-central1-docker.pkg.dev/midyear-byway-418606/wine-park:$SHORT_SHA']
+    args: ['build', '-t', 'us-central1-docker.pkg.dev/midyear-byway-418606/wine-park/wine-park:$SHORT_SHA', '.']
 
-    # Docker push to Google Artifact Registry
+  # Docker push to Google Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
-    args: [ 'push',  ''us-central1-docker.pkg.dev/midyear-byway-418606/wine-park/wine-park:$SHORT_SHA' ]
+    args: ['push', 'us-central1-docker.pkg.dev/midyear-byway-418606/wine-park/wine-park:$SHORT_SHA']
 
-    # Deploy GAR image to App Engine
+  # Deploy Docker image to Google App Engine
   - name: 'gcr.io/cloud-builders/gcloud'
-    args: [ 'app', 'deploy', '--image-url', 'us-central1-docker.pkg.dev/midyear-byway-418606/wine-park/wine-park:$SHORT_SHA' ]
+    args: ['app', 'deploy', '--image-url=us-central1-docker.pkg.dev/midyear-byway-418606/wine-park/wine-park:$SHORT_SHA', 'app.yaml']
 
 images:
   - 'us-central1-docker.pkg.dev/midyear-byway-418606/wine-park/wine-park:$SHORT_SHA'
 
-
 options:
   logging: CLOUD_LOGGING_ONLY
+
