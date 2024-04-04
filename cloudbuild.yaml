@@ -20,7 +20,7 @@ steps:
  
   # Push Docker image to App Engine
   - name: 'gcr.io/cloud-builders/gcloud'
-    args: ['app', 'deploy', '--image-url=gcr.io/midyear-byway-418606/wine-park', 'app.yaml']
+    args: ['app', 'deploy', 'midyear-byway-418606/wine-park', 'app.yaml']
 
 images:
   - 'us-central1-docker.pkg.dev/midyear-byway-418606/wine-park/wine-park:$SHORT_SHA'
