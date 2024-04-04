@@ -23,7 +23,7 @@ steps:
   #   args: ['app', 'deploy', 'us-central1-docker.pkg.dev/midyear-byway-418606/wine-park', 'app.yaml']
       # Deploy GAR image to App Engine
   - name: 'gcr.io/cloud-builders/gcloud'
-    args: [ 'app', 'deploy', '--image-url', 'us-central1-docker.pkg.dev/midyear-byway-418606/wine-park/wine-park:$SHORT_SHA' ]
+    args: [ 'app', 'deploy', '--image-url', 'us-central1-docker.pkg.dev/midyear-byway-418606/wine-park/wine-park:$SHORT_SHA','app.yaml']
 
 images:
   - 'us-central1-docker.pkg.dev/midyear-byway-418606/wine-park/wine-park:$SHORT_SHA'
