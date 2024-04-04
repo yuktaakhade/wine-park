@@ -7,3 +7,14 @@ handlers:
     script: auto
 manual_scaling:
   instances: 1
+  
+# Use the URL of your Docker image stored in Artifact Registry
+beta_settings:
+  cloud_sql_instances: # Define your Cloud SQL instance connection name if needed
+  enable_health_check: true
+  enable_stackdriver_integration: true
+  cloud_build_timeout: 1800s
+  app_start_timeout_sec: 900
+
+# If your application requires any services or APIs, list them under the 'service' tag
+service: default
