@@ -1,11 +1,9 @@
-runtime: custom
+runtime: java
 env: flex
-service: api
-
 runtime_config:
-   jdk: openjdk:11
-
+  jdk: openjdk11
 handlers:
-- url: /.*
+  - url: /.*
+    script: auto
 manual_scaling:
   instances: 1
