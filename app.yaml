@@ -8,9 +8,9 @@ handlers:
 manual_scaling:
   instances: 1
   
-# Use the URL of your Docker image stored in Artifact Registry
-beta_settings:
-  cloud_sql_instances: # Define your Cloud SQL instance connection name if needed
+# # Use the URL of your Docker image stored in Artifact Registry
+# beta_settings:
+  cloud_sql_instances: 34.29.96.202
   enable_health_check: true
   enable_stackdriver_integration: true
   cloud_build_timeout: 1800s
