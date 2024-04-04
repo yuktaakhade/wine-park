@@ -42,9 +42,9 @@
 
 
   steps:
-  # Step 1: Git Clone
-  - name: 'gcr.io/cloud-builders/git'
-    args: ['clone', 'https://github.com/yuktaakhade/wine-park.git', 'source']
+  # # Step 1: Git Clone
+  # - name: 'gcr.io/cloud-builders/git'
+  #   args: ['clone', 'https://github.com/yuktaakhade/wine-park.git', 'source']
 
   # Step 2: Check Maven Version & Run Unit Tests
   # - name: 'maven:3'
