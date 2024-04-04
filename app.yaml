@@ -1,4 +1,4 @@
-# runtime: custom
+runtime: custom
 # env: flex
 # service: api
 
@@ -27,5 +27,5 @@
 
 runtime: custom
 env: flex
-runtime_config:
-   jdk:'openjdk11'
+# runtime_config:
+#    jdk:'openjdk11'
