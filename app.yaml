@@ -1,4 +1,4 @@
-runtime: custom
+# runtime: custom
 # env: flex
 # service: api
 
@@ -25,7 +25,7 @@ runtime: custom
 # automatic_scaling:
 #   min_instances: 1
 
-runtime: custom
-env: flex
+# runtime: custom
+# env: flex
 # runtime_config:
 #    jdk:'openjdk11'
