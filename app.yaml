@@ -8,5 +8,5 @@ handlers:
 manual_scaling:
   instances: 1
 network:
-  instance_tag: private-service
+  instance_tag: private-service 
   
