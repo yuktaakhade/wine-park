@@ -10,9 +10,10 @@
 # network:
 #   instance_tag: private-service 
 
-
-runtime: java
-env: flex
+runtime: java11
+handlers:
+  - url: /.*
+    script: auto
 network:
-  name: projects/	midyear-byway-418606/global/networks/	midyear-byway-418606
+  name: projects/midyear-byway-418606/global/networks/wine-park-vpc
   instance_tag: private-service
