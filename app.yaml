@@ -1,3 +1,14 @@
+# runtime: java
+# env: flex
+# runtime_config:
+#   jdk: openjdk11
+# handlers:
+#   - url: /.*
+#     script: auto
+# manual_scaling:
+#   instances: 1
+# network:
+#   instance_tag: private-service 
 runtime: java
 env: flex
 runtime_config:
@@ -8,5 +19,6 @@ handlers:
 manual_scaling:
   instances: 1
 network:
-  instance_tag: private-service 
-  
+  instance_tag: private-service
+  name: projects/midyear-byway-418606/global/networks/wine-park-vpc
+
