@@ -47,6 +47,10 @@ steps:
   - name: 'maven:3-eclipse-temurin-11-alpine'
     entrypoint: 'mvn'
     args: ['clean', 'install']
+# skip test 
+    - name: gcr.io/cloud-builders/mvn
+    entrypoint: mvn
+    args: ["test", "-Dmaven.test.skip=true"]
 
   # Step 4: Containerize APP
   - name: 'gcr.io/cloud-builders/docker'
