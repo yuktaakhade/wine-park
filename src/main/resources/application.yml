@@ -18,7 +18,7 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://34.29.96.202/demo
+    url: jdbc:mysql://10.34.144.3/wine-park-db
     username: root
     password: root
   jpa:
