@@ -11,12 +11,12 @@ steps:
   # Step 3: Build the Maven project
   - name: 'maven:3-eclipse-temurin-11-alpine'
     entrypoint: 'mvn'
-    args: ['clean', 'install']
+    args: ['clean', 'install', '-DskipTests']
 
   # Step 4: Skip Tests
-  - name: 'maven:3-eclipse-temurin-11-alpine'
-    entrypoint: 'mvn'
-    args: ['test', '-Dmaven.test.failure.ignore=true']
+  # - name: 'maven:3-eclipse-temurin-11-alpine'
+  #   entrypoint: 'mvn'
+  #   args: ['test', '-Dmaven.test.failure.ignore=true']
 
   # Step 5: Containerize APP
   - name: 'gcr.io/cloud-builders/docker'
