@@ -43,10 +43,10 @@ steps:
   #   entrypoint: 'mvn'
   #   args: ['test']
 
-  # # Step 3: Build the Maven project
-  # - name: 'maven:3-eclipse-temurin-11-alpine'
-  #   entrypoint: 'mvn'
-  #   args: ['clean', 'install']
+  # Step 3: Build the Maven project
+  - name: 'maven:3-eclipse-temurin-11-alpine'
+    entrypoint: 'mvn'
+    args: ['clean', 'install']
 
   # Step 4: Containerize APP
   - name: 'gcr.io/cloud-builders/docker'
