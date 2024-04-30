@@ -11,3 +11,4 @@ network:
   egress_setting: PRIVATE_RANGES_ONLY
 manual_scaling:
   instances: 1
+
