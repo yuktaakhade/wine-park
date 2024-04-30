@@ -8,7 +8,6 @@ handlers:
 network:
   name: projects/midyear-byway-418606/global/networks/wine-park-vpc
   subnetwork_name: projects/midyear-byway-418606/regions/us-central1/subnetworks/wine-park-subnet
-  egress_setting: PRIVATE_RANGES_ONLY
+  egress_settings: PRIVATE_RANGES_ONLY
 manual_scaling:
   instances: 1
-
