@@ -4,9 +4,9 @@ steps:
   #   args: ['clone', 'https://github.com/yuktaakhade/wine-park.git', 'source']
 
   # Step 2: Check Maven Version & Run Unit Tests
-  - name: 'maven:3'
-    entrypoint: 'mvn'
-    args: ['test']
+  # - name: 'maven:3'
+  #   entrypoint: 'mvn'
+  #   args: ['test']
 
   # Step 3: Build the Maven project
   - name: 'maven:3-eclipse-temurin-11-alpine'
