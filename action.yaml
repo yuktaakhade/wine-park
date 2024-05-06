@@ -15,3 +15,4 @@ jobs:
       - run: gcloud config set project-id ${{ secrets.GCP_PROJECT_ID }}
       - run: gcloud builds submit --tag gcr.io/${{ secrets.GCP_PROJECT_ID }}/my-image
       - run: gcloud run deploy my-service --image gcr.io/${{ secrets.GCP_PROJECT_ID }}/my-image --allow-unauthenticated
+
