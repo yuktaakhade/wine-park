@@ -1,0 +1,17 @@
+name: My workflow
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: google-github-actions/auth@v0
+        with:
+          workload_identity_pool: ${{ secrets.WORKLOAD_IDENTITY_POOL }}
+      - run: gcloud config set project-id ${{ secrets.GCP_PROJECT_ID }}
+      - run: gcloud builds submit --tag gcr.io/${{ secrets.GCP_PROJECT_ID }}/my-image
+      - run: gcloud run deploy my-service --image gcr.io/${{ secrets.GCP_PROJECT_ID }}/my-image --allow-unauthenticated
