@@ -1,18 +1,26 @@
-name: My workflow
+name: Deploy Java application
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: google-github-actions/auth@v0
+      - uses: google-github-actions/setup-gcloud@v0
         with:
-          workload_identity_pool: ${{ secrets.WORKLOAD_IDENTITY_POOL }}
-      - run: gcloud config set project-id ${{ secrets.GCP_PROJECT_ID }}
-      - run: gcloud builds submit --tag gcr.io/${{ secrets.GCP_PROJECT_ID }}/my-image
-      - run: gcloud run deploy my-service --image gcr.io/${{ secrets.GCP_PROJECT_ID }}/my-image --allow-unauthenticated
-
+          version: latest
+      - run: gcloud auth configure-docker --quiet
+      - run: docker build -t gcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}:${{ github.sha }} .
+      - run: docker push gcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}:${{ github.sha }}
+      - run: gcloud compute instances create my-instance \
+          --image-family=debian-11 \
+          --image-project=debian-cloud \
+          --machine-type=e2-standard-4 \
+          --scopes cloud-platform \
+          --metadata-from-file startup-script=startup-script.sh \
+          --metadata google-docker-registry=gcr.io \
+          --metadata google-docker-image=${{ github.repository_owner }}/${{ github.event.repository.name }}:${{ github.sha }}
